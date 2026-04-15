@@ -1,0 +1,461 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{natbib}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+
+\onehalfspacing
+
+\title{\textbf{Frictions multiples sur le marché du travail ivoirien : \\
+Rigidités salariales, rationnement et asymétries d'information}}
+
+\author{Franck MIGONE\\
+\small Directeur de thèse : MOUSSA Kouamé Richard\\
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Cette thèse examine les frictions sur le marché du travail ivoirien et leurs interactions. Le premier chapitre teste l'existence d'une rigidité salariale "naturelle" en exploitant des chocs exogènes de demande (prix des matières premières et précipitations). Le deuxième chapitre examine la rigidité institutionnelle induite par le salaire minimum (SMIG). Le troisième chapitre quantifie d'abord le rationnement du travail résultant de ces rigidités, puis teste expérimentalement comment les frictions informationnelles aggravent ce rationnement. Une intervention à trois modules (certification des compétences, information sur le marché, matching assisté par algorithme) est évaluée via un essai contrôlé randomisé. %L'analyse révèle que les chercheurs d'emploi ont des croyances biaisées sur les opportunités, cherchent dans les mauvais secteurs, et ne savent pas signaler efficacement leurs compétences. Cette combinaison de rigidités salariales et de frictions informationnelles génère un rationnement particulièrement sévère et un chômage déguisé massif en auto-emploi informel. Cette recherche fournit la première analyse causale des interactions entre différentes frictions du marché du travail en Afrique de l'Ouest francophone.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction et motivation}
+
+\subsection{Contexte général}
+
+Les marchés du travail dans les pays en développement se caractérisent par de faibles taux d'emploi salarié formel. Breza et Kaur \citeyearpar{breza2025} documentent que dans les pays pauvres, les individus en âge de travailler n'occupent un emploi salarié que 20 à 50\% du temps. Cette configuration soulève une question fondamentale : reflète-t-elle un chômage involontaire massif ou une préférence pour l'auto-emploi ?
+
+La littérature récente identifie plusieurs types de frictions limitant l'emploi formel : rigidité salariale \citep{kaur2019}, pouvoir de marché \citep{breza2022, muralidharan2023}, asymétries d'information \citep{carranza2022}, et frictions de recherche \citep{abebe2021}. Cependant, ces frictions sont généralement étudiées isolément, et leurs interactions potentielles restent largement inexplorées.
+
+Cette thèse avance l'hypothèse que différentes frictions \textbf{interagissent} pour amplifier leurs effets respectifs. Spécifiquement, je montre que les rigidités salariales créent un rationnement du travail, et que les frictions informationnelles empêchent les travailleurs rationnés de trouver même les rares emplois disponibles, aggravant ainsi le chômage involontaire.
+
+\subsection{Le cas de la Côte d'Ivoire}
+
+La Côte d'Ivoire, première économie de l'UEMOA, présente un contexte idéal pour étudier ces interactions. Le pays combine : (i) une économie fortement dépendante de produits d'exportation (cacao, café) générant des chocs de demande de travail exogènes ; (ii) un salaire minimum (SMIG) revalorisé par décret à intervalles irréguliers ; (iii) un secteur informel dominant (>70\% de l'emploi) ; (iv) des données administratives de qualité (CNPS) et des enquêtes représentatives (LFS, enquêtes entreprises).
+
+Malgré son importance régionale, la Côte d'Ivoire reste absente de la littérature sur les frictions du marché du travail. Les rares études \citep{donald2024, carranza2022a} se concentrent sur des aspects spécifiques sans fournir une analyse systématique.
+
+\subsection{Questions de recherche}
+
+\begin{enumerate}
+    \item \textbf{Rigidités salariales} : Les salaires sur le marché du travail ivoirien présentent-ils une rigidité à la baisse, qu'elle soit d'origine naturelle (normes sociales, pouvoir de marché) ou institutionnelle (SMIG) ? Quelles en sont les conséquences sur l'emploi formel ?
+
+    \item \textbf{Rationnement} : Quelle est l'ampleur du chômage involontaire ? Les travailleurs rationnés se tournent-ils vers l'auto-emploi (chômage déguisé) ?
+
+    \item \textbf{Interactions avec frictions informationnelles} : Les asymétries d'information aggravent-elles causalement le rationnement ? Une intervention ciblant ces frictions améliore-t-elle les résultats d'emploi ?
+\end{enumerate}
+
+\section{Revue de littérature}
+
+\subsection{Rigidité salariale dans les pays en développement}
+
+\subsubsection{Évidence empirique de rigidité à la baisse}
+
+Kaur \citeyearpar{kaur2019} fournit la première évidence causale de rigidité salariale à la baisse dans les marchés ruraux indiens. En exploitant des chocs pluviométriques exogènes affectant la demande de travail agricole, elle démontre une asymétrie dans l'ajustement des salaires : ils augmentent de 6.7\% en réponse aux chocs positifs, mais ne diminuent pas suite aux chocs négatifs. Cette rigidité génère un rationnement substantiel. Lorsque les salaires ne s'ajustent pas à la baisse après dissipation d'un choc positif, l'emploi agricole diminue de 9\%. Pour les travailleurs sans terre — principaux offreurs de travail agricole salarié — la baisse d'emploi atteint 34\%.
+
+Ces résultats démontrent que la rigidité salariale n'est pas un phénomène propre aux économies développées ou aux secteurs formels. Elle émerge également dans les marchés ruraux informels de pays pauvres, générant du chômage involontaire et limitant la capacité des marchés du travail à s'ajuster aux fluctuations de la demande.
+
+\subsubsection{Micro-fondations de la rigidité}
+
+Plusieurs mécanismes peuvent expliquer la rigidité salariale. Breza et al. \citeyearpar{breza2022} documentent l'existence de normes sociales contre la réduction des salaires dans les marchés agricoles indiens et les marchés de construction urbaine au Kenya. Ces normes sont maintenues par des sanctions sociales : 74\% des travailleurs considèrent qu'accepter un salaire inférieur au "salaire de référence" est inacceptable, et ceux qui violent cette norme risquent l'ostracisme et la perte de références futures pour l'emploi. Les auteurs montrent expérimentalement que l'observabilité sociale des décisions salariales réduit la volonté d'accepter des baisses de salaires.
+
+Ces normes sociales peuvent émerger comme mécanisme de coordination décentralisée permettant aux travailleurs d'exercer un pouvoir de marché collectif, même en l'absence de syndicats formels. Cependant, si ces normes protègent les salaires des travailleurs employés, elles génèrent du rationnement pour ceux qui cherchent un emploi. Du côté des employeurs, Sharma \citeyearpar{sharma2024} documente une collusion via les associations professionnelles en Inde. Les petits chocs de demande ne génèrent aucun ajustement des salaires ou de l'emploi, suggérant que les entreprises résistent aux incitations à dévier. Cette collusion se brise uniquement lors de chocs importants.
+
+\subsection{Salaires minimums dans les pays en développement}
+
+\subsubsection{Effets sur l'emploi}
+
+La littérature sur les effets des salaires minimums dans les pays en développement présente des résultats contrastés selon les contextes institutionnels. Engbom et Moser \citeyearpar{engbom2022} étudient une hausse substantielle du salaire minimum au Brésil et trouvent des effets négatifs modestes sur l'emploi agrégé. Les entreprises les moins productives réduisent leur emploi, mais les entreprises plus productives absorbent une partie de ces travailleurs. Cette réallocation limite la destruction nette d'emplois tout en réduisant les inégalités salariales.
+
+Paul-Delvaux \citeyearpar{pauldelvaux2024} documente un déplacement significatif de l'emploi formel vers le secteur informel au Maroc. Ces effets sont particulièrement prononcés pour les travailleurs à bas salaires dans les zones à faible mobilité spatiale. L'étude montre également que le salaire minimum peut réduire les écarts de salaire et de revenu entre hommes et femmes. Magruder \citeyearpar{magruder2013} adopte une perspective d'équilibre général en étudiant l'Indonésie. Il montre que les hausses du salaire minimum peuvent augmenter le pouvoir d'achat des travailleurs, stimulant la demande locale et potentiellement la formalisation. Ces effets de demande peuvent compenser partiellement les effets négatifs directs sur l'emploi.
+
+\subsubsection{Application et conformité}
+
+L'efficacité du salaire minimum dépend crucialement de son application effective. Dans de nombreux pays en développement, l'application est limitée au secteur formel urbain, le vaste secteur informel demeurant largement non régulé. Cette segmentation crée un marché du travail dual où le salaire minimum affecte l'arbitrage entre formalité et informalité.
+
+\subsection{Frictions informationnelles}
+
+\subsubsection{Asymétries d'information et sélection adverse}
+
+Les employeurs ont souvent des difficultés à observer les compétences réelles des candidats, générant une sélection adverse. Carranza et al. \citeyearpar{carranza2022} montrent qu'en Afrique du Sud, une certification crédible des compétences augmente de 23\% l'emploi et de 10\% les salaires des chercheurs d'emploi. Bassi et Nansamba \citeyearpar{bassi2022} documentent des effets similaires en Ouganda pour les compétences non-cognitives. Ces interventions fonctionnent en résolvant le problème de signalement : elles permettent aux travailleurs compétents de se distinguer.
+
+Abebe et al. \citeyearpar{abebe2021} montrent qu'un atelier de candidature en Éthiopie améliore l'emploi et les salaires, avec des effets persistant quatre ans. Les auteurs attribuent ces gains à une meilleure capacité des travailleurs à signaler leurs compétences via des CV professionnels et des lettres de motivation. Du côté des employeurs, Hardy et McCasland \citeyearpar{hardy2023} démontrent qu'améliorer les technologies de filtrage au Ghana augmente à la fois l'emploi et les profits des entreprises, suggérant que les mauvais appariements limitent la demande de travail.
+
+\subsubsection{Croyances biaisées et frictions de recherche}
+
+Les travailleurs, particulièrement les jeunes, ont souvent des croyances biaisées sur le marché du travail. Bandiera et al. \citeyearpar{bandiera2023} montrent qu'en Ouganda, la formation professionnelle rend les bénéficiaires trop optimistes, intensifiant leur recherche d'emplois irréalistes. À l'inverse, l'exposition à des entreprises sans offre ferme génère du pessimisme et réduit la recherche. Alfonsi et al. \citeyearpar{alfonsi2022} démontrent qu'un programme de mentorat corrige les croyances trop optimistes des jeunes ougandais sur leurs chances d'obtenir des emplois bien payés, réorientant leur recherche vers des opportunités plus réalistes et augmentant leurs salaires. Kiss et al. \citeyearpar{kiss2023} montrent qu'informer les chercheurs d'emploi sur leurs avantages comparatifs (compétences relatives) les aide à cibler leur recherche, augmentant leurs salaires de 15\%.
+
+\subsubsection{Interactions frictions informationnelles et autres frictions}
+
+Malgré l'abondance d'études sur les frictions informationnelles, peu examinent leurs interactions avec d'autres frictions du marché du travail. Fernando et al. \citeyearpar{fernando2023} suggèrent des complémentarités : fournir aux entreprises indiennes à la fois plus de visibilité (plus de candidatures) et une meilleure technologie de screening augmente l'embauche, alors que chaque intervention seule a des effets nuls. Cela suggère que réduire les coûts de recherche sans résoudre les asymétries d'information est inefficace.
+
+Carranza et McKenzie \citeyearpar{carranza2024} soulignent dans leur méta-analyse que "réduire les coûts de recherche sans également s'attaquer aux problèmes d'information et de sélection des travailleurs a probablement un impact limité sur l'emploi agrégé." Cependant, l'interaction entre frictions informationnelles et rigidités salariales n'a pas été étudiée. Cette thèse aborde cette question en montrant que lorsque le rationnement limite les emplois disponibles, les frictions informationnelles empêchent les travailleurs de trouver même ces rares opportunités, aggravant le chômage involontaire.
+
+\subsection{Rationnement du travail et chômage déguisé}
+
+\subsubsection{Diagnostic du rationnement}
+
+Breza et al. \citeyearpar{breza2021} développent une approche pour diagnostiquer le rationnement. Ils "retirent" expérimentalement 24\% des travailleurs de villages indiens en leur offrant des emplois externes temporaires. En saison creuse, cette intervention n'affecte ni les salaires ni l'emploi total dans le village : les travailleurs restants occupent simplement les postes vacants. Cela démontre qu'au moins un travailleur sur quatre souhaitait un emploi salarié au salaire en vigueur mais ne pouvait en trouver — définition du chômage involontaire.
+
+En contraste, en haute saison, la même intervention génère une augmentation immédiate des salaires et une réduction de l'emploi total, conformément à un modèle de marché flexible. Ces résultats révèlent une hétérogénéité temporelle importante dans le fonctionnement du marché du travail rural, avec des périodes de rationnement sévère alternant avec des périodes de relative flexibilité.
+
+\subsubsection{Chômage déguisé et auto-emploi}
+
+Un résultat crucial de Breza et al. \citeyearpar{breza2021} et Kaur \citeyearpar{kaur2019} concerne le comportement des travailleurs rationnés. Lorsqu'exclus du marché du travail salarié, ils augmentent leur auto-emploi agricole, maintenant leur emploi total essentiellement constant. Pour les petits agriculteurs en saison creuse, au moins 64\% du travail sur leur exploitation n'existerait pas s'ils pouvaient trouver un emploi salarié au salaire en vigueur.
+
+Ces résultats indiquent que l'auto-emploi observé masque souvent du "chômage déguisé" plutôt qu'un entrepreneuriat productif. Les travailleurs s'engagent dans l'auto-emploi par défaut, en l'absence d'opportunités salariales, poussant la production au-delà du point où le produit marginal égale le salaire du marché. Ce phénomène, théorisé par Benjamin \citeyearpar{benjamin1992} comme "séparation incomplète", trouve ainsi une validation empirique claire liée aux frictions du marché du travail.
+
+\subsection{Lacunes dans la littérature}
+
+Trois lacunes majeures subsistent. Premièrement, l'Afrique de l'Ouest francophone reste inexplorée. Deuxièmement, les études examinent chaque friction isolément sans documenter leurs interactions. Troisièmement, comme le notent Breza et Kaur \citeyearpar{breza2025}, le lien entre rigidités, rationnement et autres frictions reste largement implicite. Cette thèse s'inscrit dans ces lacunes en documentant simultanément rigidités salariales, rationnement et frictions informationnelles en Côte d'Ivoire, et en mesurant explicitement comment elles interagissent pour amplifier le chômage involontaire.
+
+\section{Chapitre 1 : Rigidité salariale naturelle}
+
+\subsection{Question de recherche}
+
+Ce chapitre examine si les salaires sur le marché du travail ivoirien présentent une rigidité à la baisse en l'absence de contraintes réglementaires directes, et quantifie les conséquences de cette rigidité sur l'emploi.
+
+\subsection{Stratégie empirique}
+
+Suivant Kaur \citeyearpar{kaur2019}, j'exploite des chocs exogènes affectant la demande de travail pour identifier la rigidité salariale. Deux sources principales de variation sont mobilisées. Premièrement, la Côte d'Ivoire est le premier producteur mondial de cacao (40\% de la production mondiale) et un producteur important de café, caoutchouc et noix de cajou. Les variations des prix internationaux de ces produits affectent directement les revenus des planteurs et donc leur demande de travail salarié. Les prix internationaux sont déterminés sur les marchés mondiaux et peuvent être considérés comme exogènes du point de vue d'une région ivoirienne spécifique. De plus, différentes régions se spécialisent dans différentes cultures, générant une variation spatiale exploitable.
+
+Deuxièmement, les variations de pluviométrie affectent la productivité agricole et donc la demande de travail. Les données satellitaires CHIRPS (Climate Hazards Group InfraRed Precipitation with Station data) fournissent des mesures quotidiennes à une résolution de 0.05° (environ 5km), permettant une identification géographiquement précise des chocs.
+
+La spécification de base teste l'asymétrie dans la réponse des salaires aux chocs :
+
+\begin{equation}
+\log(w_{irt}) = \alpha_i + \gamma_t + \beta^+ \max(0, \Delta D_{rt}) + \beta^- \min(0, \Delta D_{rt}) + X_{irt}'\delta + \varepsilon_{irt}
+\end{equation}
+
+où $w_{irt}$ est le salaire de l'individu $i$ dans la région $r$ au temps $t$, $\alpha_i$ sont des effets fixes individuels (ou individu-employeur), $\gamma_t$ des effets fixes temporels, $\Delta D_{rt}$ capture les chocs de demande (prix ou pluie), et $X_{irt}$ des contrôles. L'hypothèse de rigidité à la baisse implique $\beta^+ > 0$ (les salaires augmentent avec la demande) mais $\beta^- = 0$ (ils ne baissent pas quand la demande diminue). Je teste ensuite les conséquences sur l'emploi via une spécification similaire. Si rigidité, on s'attend à ce que l'emploi baisse lors de chocs négatifs car les salaires ne s'ajustent pas, générant du rationnement.
+
+\subsection{Données et contributions}
+
+Les données administratives de la Caisse Nationale de Prévoyance Sociale couvrent l'ensemble des travailleurs du secteur formel privé. Les séries mensuelles de prix internationaux sont disponibles auprès de la Banque Mondiale et du FMI. CHIRPS fournit des estimations de précipitations quotidiennes depuis 1981 avec une résolution de 0.05°. Ce chapitre apportera la première évidence de rigidité salariale en Afrique de l'Ouest francophone. En exploitant deux types de chocs indépendants (prix et météo), il testera la robustesse des résultats. L'analyse d'hétérogénéité identifiera les mécanismes sous-jacents : si la rigidité est plus forte dans certains secteurs ou régions, cela suggérera des explications spécifiques (normes sociales, pouvoir syndical, structure du marché).
+
+\section{Chapitre 2 : Rigidité institutionnelle — Le SMIG}
+
+\subsection{Question de recherche}
+
+Ce chapitre examine les effets du salaire minimum interprofessionnel garanti (SMIG) sur l'emploi formel en Côte d'Ivoire. Il teste si le SMIG crée une rigidité salariale additionnelle à celle documentée au Chapitre 1, et identifie les mécanismes d'ajustement des entreprises et des travailleurs.
+
+\subsection{Stratégie empirique}
+
+J'exploite deux sources de variation pour identifier les effets du SMIG. Premièrement, les hausses discrètes du SMIG génèrent des événements datés permettant une analyse event study avant-après. Cette spécification permet de tester l'hypothèse de tendances parallèles, mesurer les effets dynamiques, et identifier les effets d'anticipation éventuels.
+
+Deuxièmement, à tout moment donné, certains travailleurs gagnent des salaires juste au-dessus du SMIG, d'autres juste en dessous. Cette discontinuité permet un Regression Discontinuity Design testant si les travailleurs juste en-dessous du SMIG ont des trajectoires différentes de ceux juste au-dessus. Troisièmement, les hausses du SMIG affectent différemment les entreprises selon leur distribution salariale pré-hausse, permettant d'exploiter l'hétérogénéité dans l'intensité du traitement.
+
+\subsection{Données et contributions}
+
+Les données CNPS sont idéales car elles fournissent les salaires exacts, les dates d'entrée et sortie d'emploi, et l'identifiant employeur. Les Labour Force Surveys complètent l'analyse en permettant de mesurer les transitions vers le secteur informel. Ce chapitre apportera la première analyse causale des effets du salaire minimum en Côte d'Ivoire et en Afrique de l'Ouest francophone. En combinant trois approches d'identification (event study, RDD, variation d'exposition), il fournira une mesure robuste des effets. L'analyse des mécanismes distinguera les ajustements via l'emploi, les heures, la composition de la main-d'œuvre, ou la formalité.
+
+\section{Chapitre 3 : Rationnement, frictions informationnelles et intervention}
+
+\subsection{Question de recherche}
+
+Ce chapitre quantifie le rationnement du travail résultant des rigidités documentées aux Chapitres 1-2, et teste expérimentalement comment les frictions informationnelles \textbf{aggravent} ce rationnement en empêchant les travailleurs de trouver même les rares emplois disponibles. Plutôt qu'une analyse purement observationnelle, ce chapitre développe et évalue une intervention ciblant les frictions informationnelles pour mesurer leur contribution au rationnement total.
+
+\subsection{Cadre conceptuel}
+
+Le rationnement se produit lorsque les rigidités salariales empêchent les salaires de s'ajuster pour équilibrer offre et demande. Au salaire rigide, l'offre excède la demande, générant du chômage involontaire. Cependant, même en présence de rationnement, certains emplois restent disponibles — des postes vacants que les employeurs cherchent à pourvoir. La littérature standard suppose que ces postes sont rapidement pourvus par les chercheurs d'emploi. Cette thèse avance une hypothèse alternative : \textbf{les frictions informationnelles empêchent l'appariement même quand des emplois et des chercheurs coexistent}.
+
+Spécifiquement, trois mécanismes amplifient le rationnement. Premièrement, les asymétries d'information : les employeurs ne peuvent observer les compétences réelles des candidats, générant une sélection adverse \citep{carranza2022}. Les travailleurs compétents ne peuvent se distinguer, limitant leur probabilité d'embauche même quand des postes existent. Deuxièmement, la recherche mal dirigée : les chercheurs d'emploi ont des croyances incorrectes sur où sont les opportunités et quels salaires sont réalistes \citep{alfonsi2022, bandiera2023}, concentrant leur recherche dans les mauvais secteurs. Troisièmement, les technologies de screening inadéquates : les employeurs manquent d'outils efficaces pour identifier les bons candidats parmi les postulants \citep{hardy2023}, laissant des postes vacants malgré des candidatures.
+
+Ces mécanismes impliquent que rationnement et frictions informationnelles ne sont pas additifs mais \textbf{multiplicatifs} : les frictions informationnelles amplifient l'impact des rigidités sur le chômage. Comme le soulignent Carranza et McKenzie \citeyearpar{carranza2024}, réduire les coûts de recherche sans résoudre les asymétries d'information a un impact limité sur l'emploi agrégé.
+
+\subsection{Stratégie empirique : Approche en deux phases}
+
+\subsubsection{Phase 1 : Diagnostic observationnel du rationnement}
+
+Je commence par mesurer le rationnement et documenter la coexistence de chômeurs et postes vacants, suggérant des frictions d'appariement. En utilisant les Labour Force Surveys (LFS) et les enquêtes entreprises, je mesure l'offre et la demande de travail au niveau régional-sectoriel. Je calcule le nombre d'appariements potentiels non réalisés. Si substantiel, cela indique que les frictions informationnelles empêchent le matching malgré disponibilité bilatérale. En comparant les secteurs où les chercheurs concentrent leur recherche aux secteurs avec postes vacants, je quantifie le décalage spatial de la recherche.
+
+Pour établir que le rationnement découle des rigidités (Chapitres 1-2), je teste si les régions/secteurs avec rigidité forte (mesurée au Chapitre 1) ou forte exposition au SMIG (Chapitre 2) présentent plus de rationnement.
+
+\subsubsection{Phase 2 : Intervention expérimentale}
+
+Pour identifier causalement la contribution des frictions informationnelles au rationnement, je développe et teste une intervention ciblant ces frictions, inspirée de la littérature récente \citep{carranza2022, fernando2023}.
+
+\subsection{Design de l'intervention}
+
+L'intervention comprend trois modules complémentaires adressant les trois mécanismes identifiés.
+
+\paragraph{Module 1 : Certification objective des compétences}
+
+Résout le problème de signalement \citep{carranza2022, bassi2022}. Les candidats passent des tests standardisés (français, mathématiques, informatique, compétences métier) et reçoivent un certificat numérique avec QR code vérifiable. Le certificat est portable (imprimable, partageable, intégrable à CV). Les employeurs peuvent vérifier instantanément l'authenticité et consulter les scores. \textit{Mécanisme ciblé} : Permet aux travailleurs compétents de se distinguer, réduisant la sélection adverse.
+
+\paragraph{Module 2 : Information sur le marché du travail}
+
+Corrige les croyances biaisées \citep{alfonsi2022, kiss2023}. Tableau de bord web fournissant : salaires médians par métier, secteur et région (données CNPS) ; distribution salariale (percentiles) ; postes vacants actuels par secteur ; compétences recherchées (analyse offres d'emploi) ; calculateur personnalisé d'adéquation au marché. \textit{Mécanisme ciblé} : Réduit l'optimisme excessif, redirige la recherche vers secteurs avec opportunités réelles.
+
+\paragraph{Module 3 : Matching assisté par algorithme}
+
+Améliore l'appariement candidats-emplois \citep{fernando2023}. Système de recommandation utilisant : scores de certification (Module 1) ; données de marché (Module 2) ; historique de placements réussis ; apprentissage automatique pour prédire adéquation candidat-emploi. Recommandations bidirectionnelles : candidats reçoivent top 10 emplois adaptés ; employeurs reçoivent top 20 candidats pour leurs postes. \textit{Mécanisme ciblé} : Facilite screening employeurs, réduit coûts de recherche bilatéraux.
+
+\subsection{Design expérimental}
+
+\subsubsection{Randomisation}
+
+Essai contrôlé randomisé à quatre bras sur 2000 chercheurs d'emploi à Abidjan et 2-3 autres villes. Randomisation stratifiée par éducation, âge et secteur cible.
+
+\textbf{Groupe Contrôle (n=500).} Accès à l'information publique standard uniquement. Suivi des résultats.
+
+\textbf{Traitement 1 : Certification (n=500).} Module 1 uniquement. Tests et certificat vérifiable.
+
+\textbf{Traitement 2 : Certification + Information (n=500).} Modules 1 et 2. Certificat plus accès au tableau de bord d'information marché.
+
+\textbf{Traitement 3 : Système complet (n=500).} Modules 1, 2 et 3. Accès à toutes fonctionnalités incluant matching assisté.
+
+Cette conception permet d'identifier la contribution marginale de chaque module et de tester les complémentarités entre interventions, comme documenté par Fernando et al. \citeyearpar{fernando2023}.
+
+\subsubsection{Durée et collecte de données}
+
+Suivi longitudinal sur 12 mois. Enquête baseline (T0) mesurant démographie, croyances sur le marché, comportement de recherche et statut emploi. Enquêtes mensuelles légères (statut emploi, recherche active, utilisation système). Enquête endline approfondie (T12) mesurant résultats finaux et satisfaction.
+
+\subsection{Outcomes et hypothèses}
+
+\subsubsection{Outcomes primaires}
+
+\begin{enumerate}
+    \item \textbf{Probabilité d'emploi formel} à T6 et T12 (binaire)
+    \item \textbf{Délai d'embauche} (jours depuis baseline)
+    \item \textbf{Salaire obtenu} (log, conditionnel sur emploi)
+    \item \textbf{Adéquation emploi-compétences} (score auto-déclaré 1-5)
+\end{enumerate}
+
+\subsubsection{Outcomes secondaires (mécanismes)}
+
+Croyances : précision des anticipations salariales ; direction de recherche : alignement secteurs cherchés avec secteurs ayant vacants ; intensité recherche : nombre de candidatures envoyées ; qualité des candidatures : taux de réponse des employeurs.
+
+\subsubsection{Hypothèses}
+
+\textbf{H1 : Certification aide} ($\beta_1 > 0$). Le signalement objectif améliore la probabilité d'embauche en résolvant la sélection adverse.
+
+\textbf{H2 : Information ajoute} ($\beta_2 > \beta_1$). La combinaison certification + information corrige les croyances et redirige la recherche, augmentant l'effet au-delà de la certification seule.
+
+\textbf{H3 : Système complet optimal} ($\beta_3 > \beta_2 > \beta_1$). Les trois modules sont complémentaires : le matching assisté exploite le signalement crédible (Module 1) et l'information de marché (Module 2) pour maximiser l'efficacité de l'appariement.
+
+\textbf{H4 : Effet plus fort avec rationnement} ($\beta_{\text{interaction}} > 0$). L'intervention devrait avoir un effet plus important dans les régions/secteurs où le rationnement (identifié en Phase 1) est sévère, confirmant que les frictions informationnelles amplifient le rationnement.
+
+\subsection{Spécification économétrique}
+
+\subsubsection{Effet moyen du traitement}
+
+\begin{equation}
+Y_i = \alpha + \beta_1 T1_i + \beta_2 T2_i + \beta_3 T3_i + X_i'\gamma + \varepsilon_i
+\end{equation}
+
+où $Y_i$ est l'outcome, $T1, T2, T3$ les indicatrices de traitement, $X_i$ les covariables de stratification.
+
+\subsubsection{Interaction avec rationnement}
+
+Pour tester si les frictions informationnelles amplifient le rationnement :
+
+\begin{equation}
+Y_i = \alpha + \beta_1 T_i + \beta_2 \text{Rationnement}_{rs(i)} + \beta_3 (T_i \times \text{Rationnement}_{rs(i)}) + X_i'\gamma + \varepsilon_i
+\end{equation}
+
+où $\text{Rationnement}_{rs(i)}$ est le niveau de rationnement (mesuré en Phase 1) dans la région-secteur de l'individu $i$. Un $\beta_3 > 0$ significatif indiquerait que réduire les frictions informationnelles est particulièrement efficace quand le rationnement est sévère, validant l'hypothèse d'amplification multiplicative.
+
+\subsubsection{Analyse de médiation}
+
+Pour identifier les mécanismes par lesquels l'intervention opère, je teste si l'effet du traitement diminue en contrôlant pour les médiateurs potentiels (précision des croyances, direction de recherche, qualité signalement).
+
+\subsection{Chômage déguisé et auto-emploi}
+
+L'hypothèse centrale est que les travailleurs qui ne trouvent pas d'emploi salarié — à la fois rationnés par les rigidités ET victimes de frictions informationnelles — se tournent vers l'auto-emploi de subsistance (chômage déguisé). Je teste si : (i) l'intervention réduit l'auto-emploi de subsistance ; (ii) la réduction est plus forte dans les contextes combinant rationnement sévère ET fortes frictions informationnelles initiales. En utilisant les LFS, je distingue entrepreneuriat volontaire et chômage déguisé. La seconde catégorie devrait diminuer plus fortement parmi les traités dans les zones à fort rationnement.
+
+\subsection{Implémentation technique}
+
+Système hébergé sur serveur on-premise (université ou partenaire institutionnel). Application web progressive (fonctionne offline, synchronisation ultérieure). Base de données PostgreSQL. Interface responsive mobile-first. Passation des tests via centres physiques (partenariat cybercafés, centres formation) ou passation autonome via smartphone. Authentification par téléphone (OTP SMS). Anti-fraude : timer strict, randomisation questions, limite tentatives. Tableau de bord utilise données CNPS (salaires), enquêtes entreprises (vacants), scraping offres d'emploi (compétences demandées). Algorithme matching combine filtrage basé contenu, filtrage collaboratif, et réseau de neurones. Ré-entraînement hebdomadaire avec nouveaux placements.
+
+\subsection{Considérations éthiques}
+
+Consentement éclairé écrit. Explication claire que certains recevront services différés (groupe contrôle accède après T12). Droit de retrait sans pénalité. Audits réguliers de parité démographique (genre, âge, origine). Contraintes de fairness dans algorithme. Tests adversariaux (modèle ne doit pas prédire attributs protégés). Publication rapport annuel sur équité du système. Soumission au comité d'éthique (IRB) avant démarrage. Conformité standards JPAL/IPA.
+
+\subsection{Puissance statistique et faisabilité}
+
+Avec $n=500$ par bras, pouvoir de 80\% pour détecter effet minimum de 8 points de pourcentage sur probabilité d'emploi (taux contrôle assumé 30\%, $\alpha=0.05$). Sur-échantillonnage de 25\% pour compenser attrition attendue de 20\%. Budget total estimé : 147 000 EUR (développement 43 500 EUR, évaluation RCT 74 800 EUR, opérations 29 000 EUR). Possibilités de réduction si développement assuré par doctorant et enquêtes par étudiants : ~97 000 EUR. Sources financement : allocation doctorale, subventions recherche (ANR/ERC), fondations (JPAL, IPA), Banque Mondiale, gouvernement ivoirien.
+
+\subsection{Contributions attendues}
+
+\subsubsection{Première mesure causale d'interactions entre frictions}
+
+Alors que la littérature étudie chaque friction isolément, ce chapitre quantifiera causalement comment elles se combinent. Le design à quatre bras identifie la contribution marginale de chaque module et teste les complémentarités.
+
+\subsubsection{Mécanismes précis}
+
+L'analyse de médiation identifiera les canaux spécifiques : signalement, croyances, technologies de screening. Cela informera le design optimal d'interventions futures.
+
+\subsubsection{Décomposition du chômage}
+
+La comparaison Phase 1 (observationnel) et Phase 2 (expérimental) permettra de décomposer le chômage entre : rationnement pur (dû aux rigidités, Chapitres 1-2) ; amplification informationnelle (mesurée par effet intervention) ; inadéquation structurelle (résidu). Cette décomposition informera les priorités de politique.
+
+\subsubsection{Implications théoriques}
+
+Les résultats suggéreront que les modèles standards de rationnement \citep{kaur2019, breza2021}, supposant information parfaite, sous-estiment le chômage involontaire. Une extension théorique incorporant frictions informationnelles est nécessaire pour prédire correctement les résultats de marché du travail.
+
+\subsubsection{Implications politiques}
+
+Si l'effet de l'intervention est substantiel, cela justifiera l'investissement dans services publics d'emploi, plateformes d'information, et systèmes de certification. Si l'interaction avec rationnement est forte ($\beta_3 > 0$), cela suggérera que politiques d'information et politiques salariales sont complémentaires, non substituts.
+
+\section{Données et faisabilité}
+
+Cette thèse s'appuie sur des données existantes et accessibles, évitant ainsi les coûts et délais de collecte primaire. Les données CNPS couvrent l'ensemble des travailleurs formels du secteur privé. Les Labour Force Surveys sont des enquêtes nationales représentatives. Les enquêtes entreprises constituent un panel rotatif sur besoins en compétences. Les données auxiliaires (prix matières premières, précipitations CHIRPS) sont disponibles gratuitement. Le Chapitre 3 nécessite des variables additionnelles disponibles dans les LFS et enquêtes entreprises, mais ne requiert pas de collecte primaire supplémentaire. La composante expérimentale du Chapitre 3 nécessite un budget dédié mais utilise des infrastructures légères (serveur on-premise, tests en ligne, enquêtes téléphoniques). L'absence de collecte primaire pour les Chapitres 1-2 permet de commencer les analyses dès l'accès aux données sécurisé.
+
+\section{Contributions et implications}
+
+\subsection{Contributions à la littérature}
+
+La contribution théorique principale est de démontrer que différentes frictions du marché du travail ne sont pas indépendantes mais \textbf{interagissent} pour amplifier leurs effets. Spécifiquement, les frictions informationnelles rendent le rationnement causé par les rigidités plus sévère qu'il ne le serait avec information parfaite. Cette perspective unifiée enrichit les modèles théoriques de rationnement \citep{kaur2019, breza2021} qui supposent implicitement que les emplois disponibles sont trouvés instantanément. Elle suggère que les estimations de rationnement basées uniquement sur offre vs demande sous-estiment le chômage involontaire véritable.
+
+Cette thèse étendra la littérature sur les frictions du marché du travail à l'Afrique de l'Ouest francophone, région largement absente des études existantes. Elle testera la généralisabilité des mécanismes identifiés en Asie du Sud et Afrique de l'Est dans un contexte institutionnel différent. La décomposition quantitative du chômage entre chômage frictionnel (normal), rationnement pur (rigidités), amplification informationnelle, et inadéquation structurelle fournira un diagnostic précis des priorités d'intervention.
+
+\subsection{Implications pour les politiques publiques}
+
+Les résultats permettront de classer les interventions par efficacité potentielle. Si le rationnement pur domine (>70\% du chômage), la priorité devrait être de flexibiliser les salaires et stimuler la demande de travail, l'amélioration de l'information étant secondaire. Si l'amplification informationnelle domine (>50\% du chômage), la priorité devrait être les services d'information (plateformes emploi, orientation), les programmes de signalement (certifications, ateliers CV), et la correction des croyances (mentorat, information réaliste), les politiques salariales étant secondaires. Si l'interaction est forte (effets multiplicatifs), des interventions combinées seront nécessaires.
+
+Si les frictions informationnelles sont substantielles, cela justifiera l'investissement dans agences publiques de placement, plateformes digitales d'emploi (avec signalement intégré), programmes d'orientation professionnelle, et partenariats public-privé pour améliorer matching. Les résultats informeront si la formation professionnelle devrait se concentrer sur compétences techniques (si inadéquation de compétences), inclure modules "recherche d'emploi" et "signalement" (si frictions informationnelles), ou être couplée avec certifications crédibles (si problème de signalement).
+
+\section{Conclusion}
+
+Cette thèse propose une analyse intégrée des frictions sur le marché du travail ivoirien, documentant non seulement leur existence mais aussi leurs interactions. En montrant que rigidités salariales et frictions informationnelles se combinent de manière multiplicative pour amplifier le chômage involontaire, elle fournit une compréhension plus complète et nuancée du fonctionnement (ou dysfonctionnement) du marché du travail. L'exploitation de données multiples — administratives (CNPS), enquêtes ménages (LFS), enquêtes entreprises — avec des méthodologies d'identification causale rigoureuses, renforcera la crédibilité des résultats. Les contributions empiriques, théoriques et de politique économique enrichiront la littérature sur les marchés du travail dans les pays en développement.
+
+\bibliographystyle{apalike}
+\begin{thebibliography}{99}
+
+\bibitem[Abebe et al.(2021)]{abebe2021}
+Abebe, G., Caria, A.S., Fafchamps, M., Falco, P., Franklin, S., and Quinn, S. (2021).
+Anonymity or distance? Job search and labour market exclusion in a growing African city.
+\textit{The Review of Economic Studies}, 88(3):1279--1310.
+
+\bibitem[Alfonsi et al.(2022)]{alfonsi2022}
+Alfonsi, L., Namubiru, M., and Spaziani, S. (2022).
+Meet your future: Experimental evidence on the labor market effects of mentors.
+Working Paper.
+
+\bibitem[Bandiera et al.(2023)]{bandiera2023}
+Bandiera, O., Bassi, V., Burgess, R., Rasul, I., Sulaiman, M., and Vitali, A. (2023).
+The search for good jobs: evidence from a six-year field experiment in Uganda.
+NBER Working Paper.
+
+\bibitem[Bassi and Nansamba(2022)]{bassi2022}
+Bassi, V. and Nansamba, A. (2022).
+Screening and signalling non-cognitive skills: experimental evidence from Uganda.
+\textit{The Economic Journal}, 132(642):471--511.
+
+\bibitem[Benjamin(1992)]{benjamin1992}
+Benjamin, D. (1992).
+Household composition, labor markets, and labor demand: Testing for separation in agricultural household models.
+\textit{Econometrica}, 60(2):287--322.
+
+\bibitem[Blattman and Dercon(2018)]{blattman2018}
+Blattman, C. and Dercon, S. (2018).
+The impacts of industrial and entrepreneurial work on income and health: Experimental evidence from Ethiopia.
+\textit{American Economic Journal: Applied Economics}, 10(2):1--38.
+
+\bibitem[Breza et al.(2021)]{breza2021}
+Breza, E., Kaur, S., and Krishnaswamy, N. (2021).
+Labor Rationing.
+\textit{American Economic Review}, 111(10):3184--3224.
+
+\bibitem[Breza et al.(2022)]{breza2022}
+Breza, E., Kaur, S., and Krishnaswamy, N. (2022).
+Social Norms as a Determinant of Aggregate Labor Supply.
+NBER Working Paper.
+
+\bibitem[Breza and Kaur(2025)]{breza2025}
+Breza, E. and Kaur, S. (2025).
+Labor Markets in Developing Countries.
+NBER Working Paper No. 33908.
+
+\bibitem[Carranza et al.(2022a)]{carranza2022}
+Carranza, E., Garlick, R., Orkin, K., and Rankin, N. (2022).
+Job search and hiring with limited information about workseekers' skills.
+\textit{American Economic Review}, 112(11):3547--3583.
+
+\bibitem[Carranza et al.(2022b)]{carranza2022a}
+Carranza, E., Donald, A., Grosset, F., and Kaur, S. (2022).
+The Social Tax: Redistributive Pressure and Labor Supply.
+NBER Working Paper.
+
+\bibitem[Carranza and McKenzie(2024)]{carranza2024}
+Carranza, E. and McKenzie, D. (2024).
+Job training and job search assistance policies in developing countries.
+\textit{Journal of Economic Perspectives}, 38(1):221--244.
+
+\bibitem[Donald and Grosset(2024)]{donald2024}
+Donald, A. and Grosset, F. (2024).
+Complementarities in Labor Supply: Joint Commute and Work Decisions.
+Working Paper.
+
+\bibitem[Engbom and Moser(2022)]{engbom2022}
+Engbom, N. and Moser, C. (2022).
+Earnings inequality and the minimum wage: Evidence from Brazil.
+\textit{American Economic Review}, 112(12):3803--3847.
+
+\bibitem[Fernando et al.(2023)]{fernando2023}
+Fernando, A.N., Singh, N., and Tourek, G. (2023).
+Hiring frictions and the promise of online job portals: Evidence from India.
+\textit{American Economic Review: Insights}, 5(4):546--562.
+
+\bibitem[Hardy and McCasland(2023)]{hardy2023}
+Hardy, M. and McCasland, J. (2023).
+Are small firms labor constrained? Experimental evidence from Ghana.
+\textit{American Economic Journal: Applied Economics}, 15(2):253--284.
+
+\bibitem[Kaur(2019)]{kaur2019}
+Kaur, S. (2019).
+Nominal Wage Rigidity in Village Labor Markets.
+\textit{American Economic Review}, 109(10):3585--3616.
+
+\bibitem[Kiss et al.(2023)]{kiss2023}
+Kiss, A., Garlick, R., Orkin, K., and Hensel, L. (2023).
+Jobseekers' beliefs about comparative advantage and (mis)directed search.
+Available at SSRN 4593303.
+
+\bibitem[Lagakos et al.(2018)]{lagakos2018}
+Lagakos, D., Moll, B., Porzio, T., Qian, N., and Schoellman, T. (2018).
+Life cycle wage growth across countries.
+\textit{Journal of Political Economy}, 126(2):797--849.
+
+\bibitem[Lewis(1954)]{lewis1954}
+Lewis, W.A. (1954).
+Economic Development With Unlimited Supplies of Labour.
+\textit{The Manchester School}, 22(2):139--191.
+
+\bibitem[Magruder(2013)]{magruder2013}
+Magruder, J.R. (2013).
+Can minimum wages cause a big push? Evidence from Indonesia.
+\textit{Journal of Development Economics}, 100(1):48--62.
+
+\bibitem[Muralidharan et al.(2023)]{muralidharan2023}
+Muralidharan, K., Niehaus, P., and Sukhtankar, S. (2023).
+General equilibrium effects of (improving) public employment programs: Experimental evidence from India.
+\textit{Econometrica}, 91(4):1261--1295.
+
+\bibitem[Paul-Delvaux(2024)]{pauldelvaux2024}
+Paul-Delvaux, L. (2024).
+Minimum Wage and Gender Gaps: Evidence from Morocco.
+Working Paper.
+
+\bibitem[Sharma(2024)]{sharma2024}
+Sharma, G. (2024).
+Collusion Among Employers in India.
+Working Paper.
+
+\end{thebibliography}
+
+\end{document}
