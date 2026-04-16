@@ -1,0 +1,936 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+
+\title{\textbf{TERMES DE RÉFÉRENCE}\\[0.5cm]
+\large Système Modulaire de Réduction des Frictions Informationnelles\\
+sur le Marché du Travail en Côte d'Ivoire}
+
+\author{Franck MIGONE\\
+\small [Université]\\
+\small Dans le cadre de la thèse doctorale\\
+\small Directeur : [Nom]}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Contexte et justification}
+
+\subsection{Problématique}
+
+Le marché du travail ivoirien souffre de multiples frictions qui limitent l'efficacité de l'allocation des ressources humaines. Comme le documentent Breza et Kaur \citeyearpar{breza2025} dans leur revue exhaustive des marchés du travail dans les pays en développement, ces frictions incluent des rigidités salariales \citep{kaur2019}, du rationnement du travail \citep{breza2021}, et des asymétries d'information tant du côté de l'offre que de la demande de travail.
+
+Les frictions informationnelles sont particulièrement saillantes. Les chercheurs d'emploi ont des croyances biaisées sur les opportunités disponibles, les salaires de marché, et leurs propres avantages comparatifs \citep{bandiera2023, kiss2023}. Simultanément, les employeurs peinent à identifier les candidats compétents en raison d'asymétries d'information sur les compétences réelles des travailleurs \citep{hardy2023}. Ces frictions se traduisent par une recherche d'emploi mal dirigée, des candidatures inadaptées, et un sous-emploi massif.
+
+La littérature récente sur les interventions visant à réduire ces frictions présente des résultats contrastés. Les plateformes digitales simples de mise en relation ont généralement échoué à améliorer les outcomes d'emploi \citep{carranza2024}. Seules les interventions combinant plusieurs dimensions — réduction des coûts de recherche, amélioration du signalement des compétences, et technologies de screening pour les employeurs — montrent des résultats positifs \citep{fernando2023}.
+
+Plus spécifiquement, la certification objective des compétences s'est avérée efficace pour améliorer l'emploi et les salaires en Afrique du Sud \citep{carranza2022} et en Ouganda \citep{bassi2022}. L'amélioration des capacités de signalement via des ateliers de candidature a produit des effets substantiels et durables en Éthiopie \citep{abebe2021}. La provision d'information réaliste sur le marché du travail corrige les croyances biaisées et améliore les décisions de recherche d'emploi \citep{alfonsi2022}. Enfin, l'unique plateforme digitale ayant montré des effets positifs — LinkedIn en Inde — doit son succès à son système intégré de recommandations et de signalement crédible \citep{wheeler2022}.
+
+Cependant, comme le soulignent Carranza et McKenzie \citeyearpar{carranza2024} dans leur méta-analyse, "atténuer les coûts de recherche sans également s'attaquer aux problèmes d'information et de sélection des travailleurs a probablement un impact limité sur l'emploi agrégé." Les interventions doivent donc être multidimensionnelles et cibler simultanément l'offre et la demande de travail.
+
+Cette thèse contribue à cette littérature en développant et testant expérimentalement un écosystème modulaire de réduction des frictions informationnelles adapté au contexte ivoirien. L'approche se distingue par (i) sa modularité permettant d'identifier la contribution de chaque composante, (ii) son intégration avec les données de marché du travail collectées pour les chapitres précédents de la thèse, et (iii) son design expérimental rigoureux mesurant non seulement les effets directs mais aussi l'interaction avec les rigidités salariales documentées aux chapitres 1 et 2.
+
+\subsection{Objectifs}
+
+\subsubsection{Objectif général}
+
+Développer et évaluer expérimentalement un système modulaire de réduction des frictions informationnelles sur le marché du travail ivoirien, et mesurer son impact sur les outcomes d'emploi ainsi que son interaction avec les rigidités salariales.
+
+\subsubsection{Objectifs spécifiques}
+
+\begin{enumerate}
+    \item Créer un système de certification objective des compétences portable et vérifiable
+    \item Développer un tableau de bord d'information sur le marché du travail local
+    \item Construire un agent de recommandation intelligent pour le matching candidats-emplois
+    \item Mesurer l'impact causal de chaque module via une expérience randomisée contrôlée
+    \item Quantifier l'interaction entre frictions informationnelles et rationnement du travail
+\end{enumerate}
+
+\subsection{Questions de recherche}
+
+\begin{enumerate}
+    \item La certification objective des compétences améliore-t-elle le matching et réduit-elle le chômage ?
+    \item L'information contextualisée sur le marché du travail corrige-t-elle les croyances biaisées et redirige-t-elle la recherche d'emploi ?
+    \item Le matching assisté par intelligence artificielle augmente-t-il la probabilité d'embauche et réduit-il le délai de recherche ?
+    \item Quelle est la contribution relative de chaque module au résultat final ?
+    \item Les frictions informationnelles amplifient-elles le rationnement du travail causé par les rigidités salariales ?
+\end{enumerate}
+
+\section{Revue de littérature}
+
+\subsection{Frictions informationnelles : évidence empirique}
+
+\subsubsection{Asymétries d'information et signalement}
+
+Les employeurs ont souvent des difficultés à observer les compétences réelles des candidats, créant une sélection adverse classique. Carranza et al. \citeyearpar{carranza2022} démontrent qu'en Afrique du Sud, une certification crédible des compétences augmente l'emploi de 23\% et les salaires de 10\% parmi les chercheurs d'emploi. L'intervention fonctionne en permettant aux travailleurs compétents de se distinguer des travailleurs moins compétents, résolvant ainsi le problème de pooling.
+
+De manière complémentaire, Bassi et Nansamba \citeyearpar{bassi2022} montrent que la certification de compétences non-cognitives (fiabilité, motivation) en Ouganda produit des effets similaires. Abebe et al. \citeyearpar{abebe2021} documentent qu'un simple atelier de candidature en Éthiopie — enseignant à rédiger des CV professionnels et des lettres de motivation — améliore substantiellement l'emploi et les salaires, avec des effets persistant quatre années après l'intervention.
+
+Du côté de la demande, Hardy et McCasland \citeyearpar{hardy2023} montrent qu'améliorer les technologies de screening des employeurs au Ghana augmente à la fois l'emploi et les profits des entreprises. Cela suggère que les mauvais appariements limitent non seulement le bien-être des travailleurs mais aussi l'efficience des entreprises.
+
+\subsubsection{Croyances biaisées et information}
+
+Les travailleurs, particulièrement les jeunes, ont souvent des croyances incorrectes sur le marché du travail. Bandiera et al. \citeyearpar{bandiera2023} documentent qu'en Ouganda, la formation professionnelle rend les bénéficiaires excessivement optimistes, les conduisant à rechercher des emplois irréalistes et prolongeant paradoxalement leur chômage. À l'inverse, Alfonsi et al. \citeyearpar{alfonsi2022} montrent qu'un programme de mentorat corrigeant ces croyances trop optimistes réoriente la recherche vers des opportunités réalistes et augmente substantiellement les salaires.
+
+Kiss et al. \citeyearpar{kiss2023} démontrent qu'informer les chercheurs d'emploi sur leurs avantages comparatifs — leurs compétences relatives par rapport au marché — les aide à cibler leur recherche plus efficacement, augmentant leurs salaires de 15\%.
+
+\subsubsection{Plateformes digitales : succès et échecs}
+
+La majorité des plateformes digitales d'emploi testées dans les pays en développement ont produit des résultats décevants. Comme le résument Carranza et McKenzie \citeyearpar{carranza2024}, les plateformes se limitant à lister des offres d'emploi et réduire les coûts de recherche ont généralement des effets nuls ou négatifs sur l'emploi.
+
+L'exception notable est LinkedIn en Inde. Wheeler et al. \citeyearpar{wheeler2022} montrent que LinkedIn améliore significativement les outcomes d'emploi, mais attribuent ce succès non pas à la plateforme elle-même mais à son système intégré de recommandations professionnelles et de signalement crédible via les réseaux.
+
+\subsubsection{Complémentarités entre interventions}
+
+Fernando et al. \citeyearpar{fernando2023} fournissent une évidence cruciale sur les complémentarités. En Inde, ils testent séparément (i) augmenter le nombre de candidatures reçues par les employeurs et (ii) améliorer leur technologie de screening. Chaque intervention isolée produit des effets nuls. Seule la combinaison des deux augmente significativement l'embauche et les profits.
+
+Cette évidence suggère que les interventions doivent être bilatérales — ciblant simultanément l'offre (travailleurs) et la demande (employeurs) — et multidimensionnelles — combinant réduction des coûts de recherche, amélioration du signalement, et technologies de screening.
+
+\subsection{Lien avec rigidités salariales et rationnement}
+
+Bien que la littérature sur les frictions informationnelles soit abondante, l'interaction entre ces frictions et d'autres imperfections du marché du travail reste largement inexplorée. Kaur \citeyearpar{kaur2019} documente la rigidité salariale à la baisse en Inde, montrant qu'elle génère du rationnement substantiel. Breza et al. \citeyearpar{breza2021} quantifient ce rationnement expérimentalement : au moins 25\% des travailleurs en saison creuse souhaitent un emploi salarié au salaire en vigueur mais n'en trouvent pas.
+
+Cette thèse teste l'hypothèse que les frictions informationnelles amplifient le rationnement causé par les rigidités. Lorsque les rigidités limitent le nombre d'emplois disponibles, les frictions informationnelles empêchent les travailleurs de trouver même ces rares opportunités. Le rationnement observé résulte donc de l'interaction multiplicative des deux types de frictions, non de leur simple addition.
+
+À notre connaissance, aucune étude n'a testé empiriquement cette hypothèse d'interaction. Cette lacune motive l'intégration du présent chapitre avec les chapitres précédents de la thèse documentant les rigidités salariales (naturelles et institutionnelles via le SMIG) en Côte d'Ivoire.
+
+\section{Architecture du système}
+
+\subsection{Principes de conception}
+
+Le système repose sur quatre principes fondamentaux :
+
+\textbf{1. Modularité.} Chaque composante fonctionne indépendamment et peut être activée ou désactivée pour permettre l'identification expérimentale de sa contribution marginale.
+
+\textbf{2. Bilatéralité.} Le système cible simultanément l'offre (chercheurs d'emploi) et la demande (employeurs), reflétant l'évidence que les interventions unilatérales sont généralement inefficaces \citep{fernando2023}.
+
+\textbf{3. Multidimensionnalité.} Conformément aux recommandations de Carranza et McKenzie \citeyearpar{carranza2024}, le système combine réduction des coûts de recherche, amélioration du signalement, provision d'information, et technologies de screening.
+
+\textbf{4. Mesurabilité.} Toutes les interactions sont enregistrées pour permettre l'évaluation d'impact et l'apprentissage continu des algorithmes.
+
+\subsection{Vue d'ensemble}
+
+Le système comprend trois modules complémentaires :
+
+\textbf{Module 1 : Certification des compétences.} Résout le problème de signalement en fournissant une évaluation objective et vérifiable des compétences (français, mathématiques, informatique, compétences métier). Inspiré de Carranza et al. \citeyearpar{carranza2022} et Bassi et Nansamba \citeyearpar{bassi2022}.
+
+\textbf{Module 2 : Information sur le marché du travail.} Corrige les croyances biaisées en fournissant une information précise sur les salaires, les compétences demandées, et les opportunités sectorielles. Mobilise les données administratives CNPS et les enquêtes entreprises collectées pour la thèse. Inspiré de Alfonsi et al. \citeyearpar{alfonsi2022} et Kiss et al. \citeyearpar{kiss2023}.
+
+\textbf{Module 3 : Matching intelligent.} Améliore l'appariement candidats-emplois via un agent de recommandation basé sur l'apprentissage automatique. Combine les approches de Wheeler et al. \citeyearpar{wheeler2022} et Fernando et al. \citeyearpar{fernando2023}.
+
+\subsection{Flux de données intégré}
+
+Les trois modules sont interconnectés :
+
+\begin{enumerate}
+    \item Le candidat crée un profil et passe les \textbf{certifications} (Module 1)
+    \item Les scores de certification alimentent le système de \textbf{recommandation} (Module 3)
+    \item Le candidat consulte le \textbf{tableau de bord} (Module 2) pour comprendre le marché
+    \item L'information de marché informe l'\textbf{agent de recommandation} (salaire réaliste, secteurs dynamiques)
+    \item Les placements réussis enrichissent les \textbf{données de marché} (Module 2) et entraînent l'\textbf{algorithme} (Module 3)
+    \item Les gaps de compétences détectés informent la création de \textbf{nouveaux tests} (Module 1)
+\end{enumerate}
+
+Cette intégration crée un système auto-améliorant où chaque module renforce l'efficacité des autres.
+
+\section{Module 1 : Certification des compétences}
+
+\subsection{Objectif}
+
+Fournir une certification objective, vérifiable et portable des compétences professionnelles pour résoudre le problème de signalement documenté par Carranza et al. \citeyearpar{carranza2022}.
+
+\subsection{Batterie de tests}
+
+\subsubsection{Tests de base (obligatoires)}
+
+\textbf{Français professionnel} (30 minutes). Compréhension écrite (analyse offres d'emploi, consignes), expression écrite (rédaction email professionnel). Score 0-100.
+
+\textbf{Mathématiques appliquées} (20 minutes). Arithmétique, pourcentages, ratios, calculs budgétaires. Score 0-100.
+
+\textbf{Logique et résolution de problèmes} (20 minutes). Séquences logiques, compréhension de consignes complexes. Score 0-100.
+
+\subsubsection{Tests spécialisés (selon profil)}
+
+\textbf{Informatique} (30 minutes). Suite bureautique (Excel, Word), email, internet. Score 0-100.
+
+\textbf{Compétences métier} (variable). Tests adaptés au domaine déclaré : comptabilité, vente, technique. Score 0-100.
+
+\subsection{Système de certification et vérification}
+
+Chaque candidat reçoit un certificat numérique avec :
+\begin{itemize}
+    \item Identité (nom, photo)
+    \item Scores détaillés par compétence
+    \item Date d'émission et validité (12 mois)
+    \item Code QR unique
+\end{itemize}
+
+Le code QR permet à tout employeur de vérifier instantanément l'authenticité du certificat via une page web publique. Chaque vérification est enregistrée (timestamp, IP) pour prévenir la fraude.
+
+Le certificat est portable : imprimable, partageable par SMS/email, intégrable à LinkedIn ou autres profils professionnels.
+
+\subsection{Passation des tests}
+
+\subsubsection{Centres physiques}
+
+Partenariat avec cybercafés et centres de formation dans les villes principales (Abidjan, Bouaké, Yamoussoukro, San-Pédro). Personnel formé à la supervision. Équipement fourni (tablettes). Capacité 10-20 candidats par jour et par centre.
+
+\subsubsection{Passation autonome}
+
+Pour les zones connectées : passation via smartphone personnel. Application web progressive fonctionnant offline puis synchronisation. Vérification identité renforcée (photo + pièce d'identité).
+
+\subsection{Anti-fraude}
+
+\begin{itemize}
+    \item Temps limite strict par section
+    \item Randomisation des questions (pool de 500+ par test)
+    \item Limite de tentatives (1 par mois)
+    \item Détection changement d'onglet (warning puis invalidation)
+    \item Surveillance physique dans centres agréés
+\end{itemize}
+
+\subsection{Infrastructure technique}
+
+\subsubsection{Architecture}
+
+\textbf{Frontend.} Application web progressive (PWA) développée en React. Fonctionne offline via IndexedDB. Responsive mobile-first.
+
+\textbf{Backend.} API REST développée en Python (FastAPI). Base de données PostgreSQL. Stockage fichiers (certificats PDF, photos) sur serveur local.
+
+\textbf{Hébergement.} Serveur on-premise hébergé par l'université ou partenaire institutionnel (ministère de l'Emploi, INS). Configuration : serveur Linux (Ubuntu), Nginx reverse proxy, backup quotidien automatique.
+
+\subsubsection{Sécurité}
+
+\begin{itemize}
+    \item HTTPS obligatoire (certificat Let's Encrypt)
+    \item Authentification par numéro de téléphone (OTP via SMS)
+    \item Chiffrement des données sensibles
+    \item Logs d'accès et d'audit
+    \item Conformité RGPD (consentement explicite, droit à l'oubli)
+\end{itemize}
+
+\subsection{Indicateurs de succès}
+
+\textbf{Adoption :}
+\begin{itemize}
+    \item Nombre de certificats délivrés (objectif : 1000+ en 6 mois)
+    \item Taux de complétion des tests (objectif : >80\%)
+    \item Diversité des profils (secteurs, niveaux)
+\end{itemize}
+
+\textbf{Utilisation :}
+\begin{itemize}
+    \item Taux d'ajout à CV/profils (objectif : >60\%)
+    \item Nombre de vérifications par employeurs (objectif : 3+ par certificat)
+    \item Taux de renouvellement après 1 an (objectif : >40\%)
+\end{itemize}
+
+\textbf{Impact (mesure expérimentale, cf. section 7) :}
+\begin{itemize}
+    \item Δ probabilité d'embauche
+    \item Δ salaire obtenu
+    \item Δ délai d'embauche
+    \item Δ adéquation poste-compétences
+\end{itemize}
+
+\section{Module 2 : Tableau de bord marché du travail}
+
+\subsection{Objectif}
+
+Corriger les croyances biaisées et réduire la recherche mal dirigée en fournissant une information précise, actualisée et contextualisée sur le marché du travail ivoirien, suivant l'approche de Alfonsi et al. \citeyearpar{alfonsi2022}.
+
+\subsection{Sources de données}
+
+\subsubsection{Données existantes (thèse)}
+
+\textbf{CNPS.} Salaires moyens, médians et distribution (percentiles 10, 25, 75, 90) par secteur, poste et région. Évolution temporelle. Taille des entreprises, turnover.
+
+\textbf{Enquêtes entreprises.} Postes vacants par secteur et niveau de qualification. Compétences recherchées. Difficultés de recrutement.
+
+\textbf{Labour Force Surveys.} Taux d'emploi par profil. Durée médiane de recherche d'emploi. Secteurs d'activité.
+
+\subsubsection{Données nouvelles}
+
+\textbf{Scraping offres d'emploi.} Extraction automatisée hebdomadaire depuis les principaux sites d'emploi ivoiriens (Emploi.ci, JobinAfrica, etc.). Variables : titre poste, secteur, salaire (si mentionné), compétences requises, localisation. Volume attendu : 500-1000 offres actives.
+
+\subsection{Fonctionnalités du tableau de bord}
+
+\subsubsection{Vue d'ensemble marché}
+
+Statistiques agrégées : salaire médian national, nombre de postes vacants, durée médiane de recherche d'emploi. Classement des secteurs qui embauchent (par volume de postes).
+
+\subsubsection{Explorateur de salaires}
+
+Interface interactive permettant de sélectionner :
+\begin{itemize}
+    \item Poste/métier
+    \item Secteur
+    \item Région
+    \item Niveau d'expérience
+\end{itemize}
+
+Affichage :
+\begin{itemize}
+    \item Salaire médian (mise en évidence)
+    \item Distribution (graphique box plot)
+    \item Comparaison inter-régionale (carte)
+    \item Évolution temporelle (3 dernières années)
+\end{itemize}
+
+Contextualisation : si l'utilisateur indique son salaire de réservation, le système affiche "Votre attente (X FCFA) se situe au Ye percentile. Seulement Z\% des postes offrent ce salaire."
+
+\subsubsection{Compétences demandées}
+
+Par métier, affichage des top 10 compétences mentionnées dans les offres d'emploi, avec fréquence et niveau demandé (débutant/intermédiaire/expert). Tendances : augmentation ou diminution de la demande sur les 6-12 derniers mois.
+
+\subsubsection{Calculateur "Job Market Fit"}
+
+L'utilisateur entre :
+\begin{itemize}
+    \item Sa formation
+    \item Ses compétences (auto-rempli si certifié via Module 1)
+    \item Son expérience
+    \item Son salaire souhaité
+    \item Sa localisation
+\end{itemize}
+
+Le système calcule :
+\begin{itemize}
+    \item Score d'adéquation global (0-100)
+    \item Liste de métiers recommandés avec probabilité de match
+    \item Gaps de compétences identifiés
+    \item Réalisme du salaire souhaité (comparaison au marché)
+\end{itemize}
+
+\subsubsection{Alertes opportunités}
+
+L'utilisateur peut s'abonner à des alertes (SMS ou email) pour des critères spécifiques (métier, localisation, salaire minimum). Fréquence : hebdomadaire. Contenu : nombre de nouveaux postes correspondants, salaire moyen, top compétence demandée.
+
+\subsection{Infrastructure technique}
+
+\textbf{Frontend.} Application web développée en Next.js (React avec rendu côté serveur). Visualisations : D3.js pour les graphiques interactifs, Leaflet pour la carte de Côte d'Ivoire.
+
+\textbf{Backend.} API Python (FastAPI). Pipeline ETL : scripts de nettoyage et agrégation des données CNPS, enquêtes et scraping. Orchestration : scripts cron pour mises à jour automatiques (hebdomadaires pour CNPS, quotidiennes pour scraping).
+
+\textbf{Base de données.} PostgreSQL avec extension TimescaleDB pour les séries temporelles (salaires). Tables pré-agrégées pour accélération des requêtes.
+
+\textbf{Hébergement.} Serveur on-premise partagé avec Module 1. Cache Redis pour requêtes fréquentes.
+
+\subsection{Accès et distribution}
+
+Accès gratuit et public. Aucune inscription requise pour consultation (favorise adoption maximale). Données anonymisées (conformité RGPD). API publique documentée pour permettre intégration par partenaires (centres de formation, ONG).
+
+\subsection{Indicateurs de succès}
+
+\textbf{Adoption :}
+\begin{itemize}
+    \item Visiteurs uniques mensuels (objectif : 5000+ après 6 mois)
+    \item Pages vues par session (objectif : >3)
+    \item Taux de rebond (objectif : <40\%)
+\end{itemize}
+
+\textbf{Utilisation :}
+\begin{itemize}
+    \item Fonctionnalités les plus consultées
+    \item Requêtes salaires (métiers populaires)
+    \item Utilisation calculateur fit (objectif : >30\% visiteurs)
+    \item Abonnements alertes (objectif : >15\% visiteurs)
+\end{itemize}
+
+\textbf{Impact (mesure expérimentale) :}
+\begin{itemize}
+    \item Δ précision des croyances (enquête pré/post)
+    \item Δ direction de recherche (secteurs ciblés)
+    \item Δ salaire de réservation (ajustement réaliste)
+    \item Δ probabilité d'embauche
+\end{itemize}
+
+\section{Module 3 : Agent de recommandation intelligent}
+
+\subsection{Objectif}
+
+Créer un système de recommandation bidirectionnel optimisant le matching candidats-emplois en présence d'information imparfaite. S'inspire de l'approche de Wheeler et al. \citeyearpar{wheeler2022} mais adapté au contexte de faible pénétration digitale.
+
+\subsection{Approche de modélisation}
+
+\subsubsection{Représentation des candidats et emplois}
+
+Chaque candidat est représenté par un vecteur de caractéristiques :
+\begin{itemize}
+    \item Scores de certification (Module 1)
+    \item Profil démographique (âge, éducation, expérience)
+    \item Compétences déclarées (vectorisation)
+    \item Préférences (salaire souhaité, localisation, secteurs)
+    \item Métadonnées (complétude profil, activité récente)
+\end{itemize}
+
+Chaque emploi est représenté par :
+\begin{itemize}
+    \item Requis (éducation, expérience, seuils de certification)
+    \item Description (vectorisation du texte)
+    \item Caractéristiques (salaire, localisation, secteur, type contrat)
+    \item Métadonnées (ancienneté annonce, nombre de vues/candidatures)
+\end{itemize}
+
+\subsubsection{Modèles de matching}
+
+Approche hybride combinant trois méthodes complémentaires :
+
+\textbf{1. Filtrage basé contenu.} Similarité cosinus entre vecteurs candidat-emploi. Pénalités pour écarts salariaux importants. Filtres durs sur critères obligatoires (éducation minimum, certifications).
+
+\textbf{2. Filtrage collaboratif.} Factorisation matricielle (type ALS) sur historique des placements réussis. Recommande emplois similaires à ceux obtenus par candidats au profil proche.
+
+\textbf{3. Réseau de neurones.} Modèle profond apprenant à prédire la probabilité de match réussi (embauche) à partir des caractéristiques candidat-emploi et des embeddings.
+
+Score final : combinaison pondérée des trois modèles. Pondération adaptative selon richesse des données disponibles (si candidat nouveau → plus de poids sur contenu, si historique riche → plus sur collaboratif).
+
+\subsubsection{Diversification}
+
+Algorithme de Maximal Marginal Relevance pour diversifier les recommandations (éviter 10 emplois quasi-identiques). Trade-off pertinence vs. diversité pour exposer le candidat à une variété d'opportunités.
+
+\subsubsection{Explicabilité}
+
+Pour chaque recommandation, génération automatique d'explications textuelles :
+\begin{itemize}
+    \item "Vos compétences correspondent bien : Excel, Sage, Fiscalité"
+    \item "Votre score Français (78\%) dépasse le requis (70\%)"
+    \item "Salaire proposé proche de vos attentes"
+    \item "Candidats similaires ont été embauchés pour ce type de poste"
+\end{itemize}
+
+Crucial pour confiance utilisateur et adoption.
+
+\subsection{Apprentissage continu}
+
+\subsubsection{Collecte de feedback}
+
+\textbf{Implicite :} candidature envoyée, emploi sauvegardé, temps passé sur offre, emploi ignoré.
+
+\textbf{Explicite :} notation recommandation (thumbs up/down), raison de non-intérêt, satisfaction post-embauche.
+
+\subsubsection{Ré-entraînement}
+
+Pipeline automatisé hebdomadaire :
+\begin{enumerate}
+    \item Récupération nouvelles interactions
+    \item Labellisation outcomes (0=ignoré, 0.3=vu, 0.6=candidature, 1=embauché)
+    \item Ré-entraînement incrémental des modèles
+    \item Validation sur ensemble de test
+    \item Déploiement si amélioration des métriques
+\end{enumerate}
+
+\subsection{Interface utilisateur}
+
+\subsubsection{Côté candidat}
+
+Dashboard personnel affichant :
+\begin{itemize}
+    \item Statistiques marché pour le profil
+    \item Top 10 recommandations quotidiennes avec scores et explications
+    \item Suivi candidatures (statuts, relances suggérées)
+    \item Conseils personnalisés
+\end{itemize}
+
+\subsubsection{Côté employeur}
+
+Interface recruteur affichant :
+\begin{itemize}
+    \item Pour chaque poste : statistiques (vues, candidatures)
+    \item Top 20 candidats recommandés (incluant non-candidats proactifs)
+    \item Scores de match et justifications
+    \item Possibilité inviter candidats à postuler
+    \item Screening assisté (filtres automatiques)
+\end{itemize}
+
+\subsection{Infrastructure technique}
+
+\textbf{Frameworks ML.} PyTorch ou TensorFlow pour réseau de neurones. Scikit-learn pour preprocessing et modèles de base. Sentence-Transformers pour embeddings textuels.
+
+\textbf{Serving.} Modèles déployés sur serveur on-premise. API REST pour prédictions. Mise en cache des embeddings et top-K pré-calculés (refresh quotidien).
+
+\textbf{Stockage.} PostgreSQL pour données structurées. Vecteurs embeddings stockés en colonnes dédiées avec indexation pour recherche rapide.
+
+\subsection{Considérations éthiques}
+
+\subsubsection{Prévention des biais}
+
+\textbf{Risque :} Si historique d'embauches biaisé (genre, origine), modèle apprend et reproduit biais.
+
+\textbf{Mitigation :}
+\begin{itemize}
+    \item Audits réguliers de parité démographique
+    \item Contraintes de fairness dans algorithme (représentation équitable)
+    \item Exclusion de variables proxies (nom, quartier résidence)
+    \item Tests adversariaux (modèle ne doit pas prédire genre/ethnie)
+\end{itemize}
+
+\subsubsection{Transparence}
+
+\begin{itemize}
+    \item Explications fournies pour chaque recommandation
+    \item Droit de contester un score
+    \item Logs d'audit complets
+    \item Publication rapport annuel sur fairness
+\end{itemize}
+
+\subsection{Indicateurs de succès}
+
+\textbf{Métriques techniques :}
+\begin{itemize}
+    \item Precision@10 (objectif : >60\%)
+    \item Click-through rate (objectif : >15\%)
+    \item Application rate (objectif : >8\%)
+\end{itemize}
+
+\textbf{Métriques business (mesure expérimentale) :}
+\begin{itemize}
+    \item Candidats utilisant système vs. contrôle :
+    \item Δ probabilité embauche (objectif : +20\%)
+    \item Δ délai embauche (objectif : -25\%)
+    \item Δ adéquation poste (objectif : +30\%)
+    \item Δ satisfaction (objectif : >4/5)
+\end{itemize}
+
+\section{Évaluation d'impact : Design expérimental}
+
+\subsection{Questions de recherche}
+
+\begin{enumerate}
+    \item Les certifications objectives améliorent-elles le matching et réduisent-elles le chômage ?
+    \item L'information sur le marché corrige-t-elle les croyances et redirige-t-elle la recherche ?
+    \item Le matching IA augmente-t-il la probabilité d'embauche ?
+    \item Quelle est la contribution relative de chaque module ?
+    \item Les frictions informationnelles amplifient-elles le rationnement (interaction avec Chapitres 1-2) ?
+\end{enumerate}
+
+\subsection{Design expérimental}
+
+\subsubsection{Randomisation}
+
+Essai contrôlé randomisé à quatre bras sur 2000 chercheurs d'emploi à Abidjan et 2-3 autres villes. Randomisation stratifiée par éducation, âge et secteur cible.
+
+\textbf{Groupe Contrôle (n=500).} Accès à l'information publique standard. Pas de certification, dashboard ou assistance. Suivi des outcomes uniquement.
+
+\textbf{Traitement 1 : Certification seule (n=500).} Module 1 uniquement. Tests et certificat. Pas de dashboard ni IA.
+
+\textbf{Traitement 2 : Certification + Dashboard (n=500).} Modules 1 et 2. Tests, certificat et accès au tableau de bord d'information. Pas de matching IA.
+
+\textbf{Traitement 3 : Système complet (n=500).} Modules 1, 2 et 3. Accès à toutes les fonctionnalités.
+
+\subsubsection{Durée}
+
+Suivi longitudinal sur 12 mois minimum. Collecte baseline (T0), enquêtes mensuelles légères (statut emploi, recherche), et endline approfondie (T12).
+
+\subsection{Collecte de données}
+
+\subsubsection{Baseline (T0)}
+
+\begin{itemize}
+    \item Démographie : âge, genre, éducation, expérience
+    \item Croyances : salaires attendus, probabilité embauche estimée, durée recherche prévue
+    \item Comportement : secteurs ciblés, méthodes recherche, intensité
+    \item Statut actuel : employé/chômeur/auto-emploi
+\end{itemize}
+
+\subsubsection{Suivi mensuel (M1-M12)}
+
+\begin{itemize}
+    \item Statut emploi (binaire + détails si employé)
+    \item Recherche active : nombre candidatures, secteurs, canaux
+    \item Utilisation système (logs automatiques)
+\end{itemize}
+
+\subsubsection{Endline (T12)}
+
+\begin{itemize}
+    \item Outcomes emploi : statut, salaire, satisfaction, adéquation
+    \item Croyances actualisées
+    \item Satisfaction système
+    \item Bien-être (stress, optimisme)
+\end{itemize}
+
+\subsection{Outcomes}
+
+\subsubsection{Primaires}
+
+\begin{enumerate}
+    \item Probabilité d'emploi formel à T6 et T12 (binaire)
+    \item Délai d'embauche (jours depuis baseline)
+    \item Salaire obtenu (log, conditionnel sur emploi)
+    \item Adéquation emploi-compétences (score 1-5)
+\end{enumerate}
+
+\subsubsection{Secondaires}
+
+\begin{enumerate}
+    \item Précision des croyances : écart salaire attendu vs. réel
+    \item Comportement recherche : diversité secteurs, intensité candidatures
+    \item Bien-être : stress, optimisme
+\end{enumerate}
+
+\subsection{Spécification économétrique}
+
+\subsubsection{Effet moyen du traitement}
+
+\begin{equation}
+Y_i = \alpha + \beta_1 T1_i + \beta_2 T2_i + \beta_3 T3_i + X_i'\gamma + \varepsilon_i
+\end{equation}
+
+où $Y_i$ est l'outcome, $T1, T2, T3$ les indicatrices de traitement, $X_i$ les covariables de stratification.
+
+\textbf{Hypothèses :}
+\begin{itemize}
+    \item $H_1$: $\beta_1 > 0$ (Certification aide)
+    \item $H_2$: $\beta_2 > \beta_1$ (Cert + Info > Cert seule)
+    \item $H_3$: $\beta_3 > \beta_2 > \beta_1$ (Système complet > partiel)
+\end{itemize}
+
+\subsubsection{Analyse d'hétérogénéité}
+
+\begin{equation}
+Y_i = \alpha + \beta T_i + \delta (T_i \times Subgroup_i) + X_i'\gamma + \varepsilon_i
+\end{equation}
+
+Sous-groupes : éducation (primaire/secondaire/tertiaire), genre, âge (<25, 25-35, >35), niveau compétences.
+
+\subsubsection{Interaction avec rationnement}
+
+Test si l'effet du système est plus fort dans les régions/secteurs avec fort rationnement (identifié au Chapitre 3 de la thèse) :
+
+\begin{equation}
+Y_i = \alpha + \beta_1 T_i + \beta_2 Rationnement_{rs(i)} + \beta_3 (T_i \times Rationnement_{rs(i)}) + \varepsilon_i
+\end{equation}
+
+où $Rationnement_{rs(i)}$ est le niveau de rationnement dans la région-secteur du candidat $i$.
+
+$H$: $\beta_3 > 0$ suggère que frictions info amplifient rationnement (hypothèse centrale).
+
+\subsection{Puissance statistique}
+
+Avec $n=500$ par bras, pouvoir de 80\% pour détecter un effet minimum de 8 points de pourcentage sur probabilité d'emploi (taux contrôle assumé : 30\%, $\alpha=0.05$). Sur-échantillonnage de 25\% pour compenser attrition attendue de 20\%.
+
+\subsection{Considérations éthiques}
+
+\subsubsection{Consentement}
+
+Consentement éclairé écrit. Explication claire de la randomisation et du fait que certains ne recevront pas tous les modules immédiatement. Droit de retrait à tout moment sans pénalité.
+
+\subsubsection{Compensation}
+
+\begin{itemize}
+    \item Tous participants : 2000 FCFA par visite enquête (transport)
+    \item Groupes traitement : services gratuits (certifications, système)
+    \item Contrôle : accès différé au système après T12
+\end{itemize}
+
+\subsubsection{Minimisation des risques}
+
+Pas de withholding de services existants. Le groupe contrôle conserve accès à toutes ressources publiques habituelles. Aucun traitement potentiellement nocif.
+
+\subsubsection{Approbation}
+
+Soumission au comité d'éthique (IRB) de l'université avant démarrage. Conformité aux standards JPAL/IPA pour études dans pays en développement.
+
+\section{Budget et ressources}
+
+\subsection{Budget développement}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{6cm}r}
+\toprule
+\textbf{Poste} & \textbf{Détail} & \textbf{Coût (EUR)} \\
+\midrule
+\multicolumn{3}{l}{\textit{Module 1 : Certifications}} \\
+Développement & Frontend + Backend, 3 mois & 8\,000 \\
+Contenu tests & 500+ questions, validation & 3\,000 \\
+Vérification QR & Système génération, API & 1\,000 \\
+Infrastructure & Serveur, backup (1 an) & 1\,500 \\
+\textbf{Sous-total M1} & & \textbf{13\,500} \\
+\midrule
+\multicolumn{3}{l}{\textit{Module 2 : Dashboard}} \\
+Développement & Visualisations, 2 mois & 4\,000 \\
+Pipeline ETL & Scripts nettoyage, agrégation & 2\,000 \\
+Scraping & Extraction offres emploi & 1\,000 \\
+Infrastructure & Cache, stockage (1 an) & 1\,000 \\
+\textbf{Sous-total M2} & & \textbf{8\,000} \\
+\midrule
+\multicolumn{3}{l}{\textit{Module 3 : Matching IA}} \\
+Développement ML & Feature eng., training, 4 mois & 10\,000 \\
+Infrastructure ML & Stockage modèles (1 an) & 3\,000 \\
+Intégration API & Frontend + backend, 2 mois & 4\,000 \\
+\textbf{Sous-total M3} & & \textbf{17\,000} \\
+\midrule
+\multicolumn{3}{l}{\textit{Intégration}} \\
+Intégration 3 modules & API unifiée, auth & 3\,000 \\
+Tests utilisateurs & Beta testing, UX & 2\,000 \\
+\textbf{Sous-total intégration} & & \textbf{5\,000} \\
+\midrule
+\textbf{TOTAL DÉVELOPPEMENT} & & \textbf{43\,500} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Budget étude d'impact}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lp{6cm}r}
+\toprule
+\textbf{Poste} & \textbf{Détail} & \textbf{Coût (EUR)} \\
+\midrule
+Recrutement & Campagne, inscription 2500 part. & 5\,000 \\
+Enquête baseline & 2500 personnes, 10 enquêteurs & 8\,000 \\
+Suivi mensuel & 12 mois, appels téléphoniques & 12\,000 \\
+Enquête endline & 2500 personnes, 45 min chacun & 10\,000 \\
+Supervision & 1 superviseur, 15 mois & 12\,000 \\
+Compensation & Transport 3 visites × 2500 & 10\,000 \\
+Accès différé contrôle & Post-étude, 500 personnes & 2\,000 \\
+Analyse données & Assistant recherche, 6 mois & 8\,000 \\
+Logiciels & Stata, R licences & 500 \\
+IRB / éthique & Frais comité & 500 \\
+Imprévus (10\%) & & 6\,800 \\
+\midrule
+\textbf{TOTAL IMPACT} & & \textbf{74\,800} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Budget opérationnel (12 mois)}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Poste} & \textbf{Coût (EUR)} \\
+\midrule
+Infrastructure serveur & 6\,000 \\
+Support utilisateurs (1 ETP) & 12\,000 \\
+Maintenance développement & 8\,000 \\
+Marketing / adoption & 3\,000 \\
+\midrule
+\textbf{TOTAL OPÉRATIONNEL} & \textbf{29\,000} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Total consolidé}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lr}
+\toprule
+\textbf{Catégorie} & \textbf{Coût (EUR)} \\
+\midrule
+Développement système & 43\,500 \\
+Étude d'impact RCT & 74\,800 \\
+Opérations 12 mois & 29\,000 \\
+\midrule
+\textbf{GRAND TOTAL} & \textbf{147\,300} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Note :} Possibilités de réduction si développement assuré par doctorant et enquêtes par étudiants stagiaires : total optimisé ~97\,000 EUR.
+
+\subsection{Sources de financement potentielles}
+
+\begin{enumerate}
+    \item Allocation doctorale : 20\,000 - 40\,000 EUR
+    \item Subvention recherche ANR/ERC : 50\,000 - 100\,000 EUR
+    \item Fondations (JPAL, IPA, CEGA) : 30\,000 - 80\,000 EUR
+    \item Banque Mondiale / IFC : 50\,000+ EUR (partenariat)
+    \item Gouvernement ivoirien (Ministère Emploi) : 10\,000 - 30\,000 EUR
+\end{enumerate}
+
+\section{Timeline et jalons}
+
+\subsection{Calendrier global (24 mois)}
+
+\textbf{Mois 1-2 :} Design détaillé système. Recrutement équipe développement.
+
+\textbf{Mois 3-5 :} Développement Module 1 (Certifications). Tests alpha.
+
+\textbf{Mois 4-6 :} Développement Module 2 (Dashboard). Intégration données CNPS.
+
+\textbf{Mois 6 :} \textit{Jalon 1 — Modules 1-2 opérationnels.} Beta testing (50 utilisateurs).
+
+\textbf{Mois 7-10 :} Développement Module 3 (Matching IA). Entraînement modèles.
+
+\textbf{Mois 8 :} Recrutement participants RCT (campagne sensibilisation).
+
+\textbf{Mois 9 :} Enquête baseline (2500 participants).
+
+\textbf{Mois 10 :} \textit{Jalon 2 — Système complet opérationnel.} Tests intégration.
+
+\textbf{Mois 11 :} Lancement RCT. Activation traitements.
+
+\textbf{Mois 11-22 :} Opérations continues. Suivi mensuel participants. Ré-entraînement modèles.
+
+\textbf{Mois 18 :} \textit{Jalon 3 — Résultats intermédiaires.} Analyse T6. Présentation conférence.
+
+\textbf{Mois 23 :} Enquête endline (T12).
+
+\textbf{Mois 24 :} \textit{Jalon 4 — Finalisation.} Analyse complète. Rédaction chapitre thèse. Working papers.
+
+\subsection{Livrables}
+
+\subsubsection{Techniques}
+
+\begin{enumerate}
+    \item Code source (GitHub, open-source)
+    \item Système déployé et documentation
+    \item Base de données (schéma + dataset anonymisé)
+\end{enumerate}
+
+\subsubsection{Scientifiques}
+
+\begin{enumerate}
+    \item Chapitre de thèse (40-50 pages)
+    \item 2-3 working papers
+    \item Dataset et code de réplication
+\end{enumerate}
+
+\subsubsection{Politique}
+
+\begin{enumerate}
+    \item Rapport pour gouvernement ivoirien
+    \item Policy brief (2 pages)
+    \item Présentation stakeholders
+\end{enumerate}
+
+\section{Risques et mitigations}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{p{3.5cm}p{2cm}p{1.5cm}p{5cm}}
+\toprule
+\textbf{Risque} & \textbf{Probabilité} & \textbf{Impact} & \textbf{Mitigation} \\
+\midrule
+Faible adoption & Moyenne & Élevé & Marketing ciblé, partenariats centres formation, incentives \\
+Attrition RCT >30\% & Moyenne & Élevé & Compensation attractive, suivi régulier, relances \\
+Modèle IA sous-performe & Faible & Moyen & Baseline solide, feedback rapide, fallback règles \\
+Problèmes techniques & Moyenne & Moyen & Tests extensifs, monitoring, backups \\
+Biais recommandations & Faible & Élevé & Audits fairness, contraintes algo, comité éthique \\
+Données CNPS inaccessibles & Faible & Élevé & Sécuriser accès tôt, plan B données publiques \\
+Budget dépassé & Moyenne & Moyen & Phases prioritaires, MVP, fundraising continu \\
+Délais dépassés & Moyenne & Moyen & Marges timeline, travail parallèle \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Critères de succès}
+
+\subsection{Succès technique}
+
+\begin{itemize}
+    \item Système stable (uptime >99\%)
+    \item 2000+ utilisateurs actifs
+    \item 50+ employeurs partenaires
+    \item Precision@10 >60\%
+\end{itemize}
+
+\subsection{Succès scientifique}
+
+\begin{itemize}
+    \item Effets causaux identifiés (au moins 1 significatif p<0.05)
+    \item Publication top field journal
+    \item Présentations 2+ conférences internationales
+\end{itemize}
+
+\subsection{Succès impact}
+
+\begin{itemize}
+    \item Δ emploi >10\% (traitement vs. contrôle)
+    \item Δ délai embauche <-15\%
+    \item Satisfaction utilisateurs >4/5
+    \item Adoption post-étude (gouvernement ou ONG)
+\end{itemize}
+
+\bibliographystyle{apalike}
+\begin{thebibliography}{99}
+
+\bibitem[Abebe et al.(2021)]{abebe2021}
+Abebe, G., Caria, A.S., Fafchamps, M., Falco, P., Franklin, S., and Quinn, S. (2021).
+Anonymity or distance? Job search and labour market exclusion in a growing African city.
+\textit{The Review of Economic Studies}, 88(3):1279--1310.
+
+\bibitem[Alfonsi et al.(2022)]{alfonsi2022}
+Alfonsi, L., Namubiru, M., and Spaziani, S. (2022).
+Meet your future: Experimental evidence on the labor market effects of mentors.
+Working Paper.
+
+\bibitem[Bandiera et al.(2023)]{bandiera2023}
+Bandiera, O., Bassi, V., Burgess, R., Rasul, I., Sulaiman, M., and Vitali, A. (2023).
+The search for good jobs: evidence from a six-year field experiment in Uganda.
+NBER Working Paper.
+
+\bibitem[Bassi and Nansamba(2022)]{bassi2022}
+Bassi, V. and Nansamba, A. (2022).
+Screening and signalling non-cognitive skills: experimental evidence from Uganda.
+\textit{The Economic Journal}, 132(642):471--511.
+
+\bibitem[Breza et al.(2021)]{breza2021}
+Breza, E., Kaur, S., and Krishnaswamy, N. (2021).
+Labor Rationing.
+\textit{American Economic Review}, 111(10):3184--3224.
+
+\bibitem[Breza and Kaur(2025)]{breza2025}
+Breza, E. and Kaur, S. (2025).
+Labor Markets in Developing Countries.
+NBER Working Paper No. 33908.
+
+\bibitem[Carranza et al.(2022)]{carranza2022}
+Carranza, E., Garlick, R., Orkin, K., and Rankin, N. (2022).
+Job search and hiring with limited information about workseekers' skills.
+\textit{American Economic Review}, 112(11):3547--3583.
+
+\bibitem[Carranza and McKenzie(2024)]{carranza2024}
+Carranza, E. and McKenzie, D. (2024).
+Job training and job search assistance policies in developing countries.
+\textit{Journal of Economic Perspectives}, 38(1):221--244.
+
+\bibitem[Fernando et al.(2023)]{fernando2023}
+Fernando, A.N., Singh, N., and Tourek, G. (2023).
+Hiring frictions and the promise of online job portals: Evidence from India.
+\textit{American Economic Review: Insights}, 5(4):546--562.
+
+\bibitem[Hardy and McCasland(2023)]{hardy2023}
+Hardy, M. and McCasland, J. (2023).
+Are small firms labor constrained? Experimental evidence from Ghana.
+\textit{American Economic Journal: Applied Economics}, 15(2):253--284.
+
+\bibitem[Kaur(2019)]{kaur2019}
+Kaur, S. (2019).
+Nominal Wage Rigidity in Village Labor Markets.
+\textit{American Economic Review}, 109(10):3585--3616.
+
+\bibitem[Kiss et al.(2023)]{kiss2023}
+Kiss, A., Garlick, R., Orkin, K., and Hensel, L. (2023).
+Jobseekers' beliefs about comparative advantage and (mis)directed search.
+Available at SSRN 4593303.
+
+\bibitem[Wheeler et al.(2022)]{wheeler2022}
+Wheeler, L., Garlick, R., Johnson, E., Shaw, P., and Gargano, M. (2022).
+LinkedIn(to) job opportunities: Experimental evidence from job readiness training.
+\textit{American Economic Journal: Applied Economics}, 14(2):101--125.
+
+\end{thebibliography}
+
+\end{document}
