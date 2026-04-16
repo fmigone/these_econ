@@ -25,7 +25,7 @@ Cette thèse examine les frictions sur le marché du travail ivoirien et leurs i
 ## Compilation
 Les fichiers `.tex` sont compilés via [Overleaf](https://www.overleaf.com/).
 ## Données
-- **CNPS** — Données administratives (secteur formel privé, Côte d'Ivoire)
-- **Labour Force Surveys** — Enquêtes nationales représentatives
+- **CNPS** : Données administratives (secteur formel privé, Côte d'Ivoire)
+- **Labour Force Surveys** : ENEM , ENE-EF , ENE 2019, ERI-ESI
 - **CHIRPS** — Précipitations satellitaires (résolution 0.05°)
 - **Prix matières premières** — Banque Mondiale, FMI
