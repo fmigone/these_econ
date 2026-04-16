@@ -3,7 +3,7 @@
 **Rigidités salariales, rationnement et asymétries d'information**
 
 Thèse de doctorat en économie : Franck MIGONE  
-Directeur de thèse : MOUSSA Kouamé Richard
+Directeur de thèse : MOUSSA Kouamé Richard \n
 ENSEA
 
 ## Résumé
