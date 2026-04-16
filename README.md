@@ -14,13 +14,14 @@ Cette thèse examine les frictions sur le marché du travail ivoirien et leurs i
 3. **Rationnement, frictions informationnelles et intervention** — Quantifie le rationnement du travail et évalue expérimentalement (RCT à 4 bras, n=2000) une intervention ciblant les frictions informationnelles (certification des compétences, information marché, matching algorithmique).
 
 ## Structure du dépôt
+```
 ├── projet_de_these/ # Documents du projet de thèse
 ├── chapitre_1/ # Article 1 — Rigidité salariale naturelle
-├── chapitre_2/ # Article 2 — Rigidité institutionnelle (SMIG)
+├── chapitre_2/ # Article 2 — Rigidité institutionnelle
 ├── chapitre_3/ # Article 3 — Rationnement et frictions informationnelles
 ├── ressources_annexes/ # Littérature et références méthodologiques
 └── .gitignore
-
+```
 ## Compilation
 Les fichiers `.tex` sont compilés via [Overleaf](https://www.overleaf.com/).
 ## Données
